@@ -267,3 +267,28 @@ netstat -atnp | grep ESTA|Displays all current Established TCP connections
 - **LAST-ACK**: (both server and client) represents waiting for an acknowledgment of the connection termination request previously sent to the remote TCP (which includes an acknowledgment of its connection termination request).
 - **TIME-WAIT**: (either server or client) represents waiting for enough time to pass to be sure the remote TCP received the acknowledgment of its connection termination request. [According to RFC 793 a connection can stay in TIME-WAIT for a maximum of four minutes known as two MSL (maximum segment lifetime).
 - **CLOSED**: (both server and client) represents no connection state at all.
+
+## 三、Linux环境变量
+
+- 全局环境变量: 全局环境变量对shell会话和所有生成的子shell都是可见的。
+- 局部环境变量: 局部环境变量只对创建它们的shell可见
+
+### 1. 定位系统环境变量
+
+1. 登录Linux系统时，bash shell会从5个不通的启动文件中读取命令。
+2. $HOME下的配置，shell会按照 .bash_profile .bash_login .profile的顺序运行第一个匹配的文件，余下的被忽略。
+
+- /etc/profile
+- $HOME/.bash_profile
+- $HOME/.bashrc
+- $HOME/.bash_login
+- $HOME/.profile
+
+文件|说明
+---|---
+/etc/profile|bash默认的主启动文件。登录Linux系统，bash就会执行/etc/profile中的命令。
+$HOME 下启动文件|提供一个用户专属的启动文件来定义该用户所用到的环境变量。
+
+## 四、Linux文件权限
+
+### 1. 用户管理
